@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import axios from "axios";
 import InfoPanel from "./InfoPanel";
 import configureMockStore from "redux-mock-store";
