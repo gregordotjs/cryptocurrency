@@ -7,7 +7,7 @@ import App from "./App";
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe("testing App component", () => {
+describe("testing the App component", () => {
   it("API should have been called once", () => {
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve({}));
     render(
