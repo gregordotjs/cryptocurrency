@@ -1,15 +1,20 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
+import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import axios from "axios";
+import { store } from "app/store";
+import App from "./App";
 
-test('renders learn react link', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+jest.mock("axios");
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-  expect(getByText(/learn/i)).toBeInTheDocument();
+describe("testing InfoPanel component", () => {
+  it("renders welcome message", () => {
+    mockedAxios.get.mockImplementationOnce(() => Promise.resolve({}));
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+    expect(axios.get).toHaveBeenCalledTimes(1);
+  });
 });

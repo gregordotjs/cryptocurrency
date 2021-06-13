@@ -1,0 +1,43 @@
+.content-panel {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  padding: 1em;
+  grid-auto-rows: minmax(3rem, auto);
+  display: grid;
+  grid-template-areas:
+    "retrieved refresh"
+    "fiat fiat";
+
+  .col-retrieved {
+    grid-area: retrieved;    
+    span {
+      color: #6c757d;
+    }
+  }
+
+  .col-refresh {
+    grid-area: refresh;
+    button {
+      background-color: transparent;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .col-fiat {
+    grid-area: fiat;
+    border-top: 1px solid lightgray;
+    padding-top: 1.5em;
+    select {
+      width: 100%;
+      padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #212529;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+    }
+  }
+}
