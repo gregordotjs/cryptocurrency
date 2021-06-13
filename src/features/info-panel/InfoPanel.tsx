@@ -1,4 +1,5 @@
-import { useAppSelector, useAppDispatch } from "app/hooks";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "app/hooks";
 import {
   updateCurrencyAndRefresh,
   getCryptocurrenciesAsync,
@@ -10,7 +11,7 @@ import RefreshIcon from "components/RefreshIcon";
 import "./InfoPanel.scss";
 
 export default function InfoPanel() {
-  const { lastRetrieved, fiatMoney } = useAppSelector(currencies);
+  const { lastRetrieved, fiatMoney } = useSelector(currencies);
   const dispatch = useAppDispatch();
 
   const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {

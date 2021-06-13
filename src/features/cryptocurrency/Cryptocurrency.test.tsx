@@ -59,46 +59,36 @@ const mockedData = {
   ],
 };
 
+const WithRedux = () => (
+  <Provider store={store}>
+    <Cryptocurrency />
+  </Provider>
+);
+
 describe("testing Cryptocurrency component", () => {
   beforeEach(() => {
     mockedAxios.get.mockResolvedValueOnce({ data: mockedData });
   });
 
   it("Should call API once", () => {
-    render(
-      <Provider store={store}>
-        <Cryptocurrency />
-      </Provider>
-    );
+    render(<WithRedux />);
     expect(axios.get).toHaveBeenCalledTimes(1);
   });
 
   it("Should have loader visible and removed", async () => {
-    render(
-      <Provider store={store}>
-        <Cryptocurrency />
-      </Provider>
-    );
+    render(<WithRedux />);
     expect(screen.getByRole(/progressbar/i)).toBeInTheDocument();
     await waitForElementToBeRemoved(() => screen.queryByRole(/progressbar/i));
   });
 
   it("Should have BTC in table", async () => {
-    render(
-      <Provider store={store}>
-        <Cryptocurrency />
-      </Provider>
-    );
+    render(<WithRedux />);
     await waitForElementToBeRemoved(() => screen.queryByRole(/progressbar/i));
     expect(screen.getByText(/BTC/i)).toBeInTheDocument();
   });
 
   it("Change sort order", async () => {
-    render(
-      <Provider store={store}>
-        <Cryptocurrency />
-      </Provider>
-    );
+    render(<WithRedux />);
     await waitForElementToBeRemoved(() => screen.queryByRole(/progressbar/i));
     const sortBySymbolButton = screen.getAllByRole("button", {
       name: /sort/i,

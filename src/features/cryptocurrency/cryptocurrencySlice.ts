@@ -9,7 +9,7 @@ import { ICryptocurrency, ICryptocurrencyResponse } from "app/interfaces";
 import { RootState, AppThunk } from "app/store";
 import { fetchCryptocurrencies } from "api/cryptocurrencyAPI";
 
-interface ICryptocurrencyState {
+export interface ICryptocurrencyState {
   cryptocurrencies: ICryptocurrency[];
   fiatMoney: Currency;
   lastRetrieved: string;
